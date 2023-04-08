@@ -18,7 +18,7 @@ CREATE TABLE dbo.Basket (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     ID_SKU INT NOT NULL,
     ID_Family INT NOT NULL,
-    Quantity DECIMAL(18,2) NOT NULL CHECK (Quantity >= 0),
+    Quantity DECIMAL(18,3) NOT NULL CHECK (Quantity >= 0),
     Value DECIMAL(18,2) NOT NULL CHECK (Value >= 0),
     PurchaseDate DATETIME2 NOT NULL DEFAULT(GETDATE()),
     DiscountValue DECIMAL(18,2) NULL,
