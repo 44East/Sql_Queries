@@ -1,4 +1,4 @@
--- Создание таблицы SKU
+-- Create table SKU
 CREATE TABLE dbo.SKU (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     Code AS 's' + CAST(ID AS VARCHAR(10)),
@@ -6,14 +6,14 @@ CREATE TABLE dbo.SKU (
     CONSTRAINT UQ_SKU_Code UNIQUE (Code)
 );
 
--- Создание таблицы Family
+-- Create table Family
 CREATE TABLE dbo.Family (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     SurName NVARCHAR(50) NOT NULL,
     BudgetValue DECIMAL(18,2) NULL
 );
 
--- Создание таблицы Basket
+-- Create table Basket
 CREATE TABLE dbo.Basket (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     ID_SKU INT NOT NULL,
