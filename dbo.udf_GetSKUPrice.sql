@@ -4,7 +4,7 @@ RETURNS DECIMAL(18, 2)
 AS
 BEGIN
     DECLARE @TotalValue DECIMAL(18, 2)
-    DECLARE @TotalQuantity DECIMAL(18, 2)
+    DECLARE @TotalQuantity DECIMAL(18, 3)
     DECLARE @Price DECIMAL(18, 2)
     
     SELECT @TotalValue = SUM(Value), @TotalQuantity = SUM(Quantity)
