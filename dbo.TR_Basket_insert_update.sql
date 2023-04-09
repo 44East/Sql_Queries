@@ -5,7 +5,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- рассчитываем DiscountValue для каждого ID_SKU
+    -- calculating DiscountValue for each ID_SKU
     UPDATE b
     SET DiscountValue = CASE 
                           WHEN sku_counts.Count > 1 THEN b.Value * 0.05 
