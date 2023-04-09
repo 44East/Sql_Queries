@@ -1,1 +1,1 @@
-"# -CreateStructure.sql" 
+# Tables creation query 
