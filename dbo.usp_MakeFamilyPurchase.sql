@@ -5,7 +5,7 @@ BEGIN
     -- Check family with that surname for exists 
     IF NOT EXISTS (SELECT 1 FROM dbo.Family WHERE SurName = @FamilySurName)
     BEGIN
-        RAISERROR(N'Ñåìüè ñ ôàìèëèåé %s íå ñóùåñòâóåò.', 16, 1, @FamilySurName)
+        RAISERROR(N'Family with that surname %s is not exists.', 16, 1, @FamilySurName)
         RETURN
     END
 
