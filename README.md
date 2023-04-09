@@ -1,1 +1,1 @@
-"# -CreateStructure.sql" 
+# Views creation query 
