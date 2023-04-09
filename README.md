@@ -1,1 +1,1 @@
-"# -CreateStructure.sql" 
+# Procedure creation query 
