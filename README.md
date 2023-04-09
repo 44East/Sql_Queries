@@ -1,1 +1,1 @@
-"# -CreateStructure.sql" 
+# Function creation query
