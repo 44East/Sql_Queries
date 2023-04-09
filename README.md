@@ -1,1 +1,1 @@
-"# -CreateStructure.sql" 
+# Trigger creation query 
