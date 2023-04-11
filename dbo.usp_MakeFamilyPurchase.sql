@@ -7,10 +7,17 @@ BEGIN
     BEGIN
         RAISERROR(N'Family with that surname %s is not exists.', 16, 1, @FamilySurName)
         RETURN
-    END
+    END;
 
     -- Refresh value from BudgetValue field at family
-    UPDATE dbo.Family
-    SET BudgetValue = BudgetValue - (SELECT SUM(Value) FROM dbo.Basket WHERE ID_Family = (SELECT ID FROM dbo.Family WHERE SurName = @FamilySurName))
-    WHERE SurName = @FamilySurName
+    WITH cte_basket AS (
+        SELECT ID_Family, SUM(Value) AS TotalValue
+        FROM dbo.Basket
+        GROUP BY ID_Family
+    )
+    UPDATE f
+    SET f.BudgetValue = f.BudgetValue - b.TotalValue
+    FROM dbo.Family f
+    INNER JOIN cte_basket b ON f.ID = b.ID_Family
+    WHERE f.SurName = @FamilySurName
 END
