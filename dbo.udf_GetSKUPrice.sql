@@ -3,18 +3,9 @@ CREATE FUNCTION dbo.udf_GetSKUPrice
 RETURNS DECIMAL(18, 2)
 AS
 BEGIN
-    DECLARE @TotalValue DECIMAL(18, 2)
-    DECLARE @TotalQuantity DECIMAL(18, 3)
-    DECLARE @Price DECIMAL(18, 2)
-    
-    SELECT @TotalValue = SUM(Value), @TotalQuantity = SUM(Quantity)
-    FROM dbo.Basket
-    WHERE ID_SKU = @ID_SKU
-    
-    IF @TotalQuantity > 0
-        SET @Price = @TotalValue / @TotalQuantity
-    ELSE
-        SET @Price = 0
-    
-    RETURN @Price
+    RETURN (
+        SELECT SUM(Value) / NULLIF(SUM(Quantity), 0) -- If Quantity == 0 then the right operand returns NULL, 
+        FROM dbo.Basket								 -- because dividing on zero prohibitted and then the full expression returns null
+        WHERE ID_SKU = @ID_SKU
+    )
 END
